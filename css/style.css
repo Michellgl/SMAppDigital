@@ -4,46 +4,66 @@
   --bg:#f8fafc;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:"Segoe UI",sans-serif;
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",sans-serif;}
+
+body{background:var(--bg);color:#1e293b;line-height:1.6;}
+
+section{padding:90px 10%;}
+
+h1,h2,h3{color:var(--primary);}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
 }
 
-body{
-  background:var(--bg);
-  color:#1e293b;
+.card{
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 20px 40px rgba(0,0,0,.1);
+  transition:.4s;
 }
 
+.card:hover{transform:translateY(-10px);}
+
+/* HERO */
 .hero{
   min-height:100vh;
   background:linear-gradient(135deg,#2563eb,#1e40af);
   color:white;
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   text-align:center;
 }
 
+.hero h1{font-size:3.5rem;color:white;}
+
+.hero p{margin:20px 0;font-size:1.3rem;}
+
 .btn{
+  display:inline-block;
+  padding:14px 30px;
   background:white;
   color:#2563eb;
-  padding:14px 30px;
   border-radius:30px;
   text-decoration:none;
   font-weight:bold;
 }
 
+/* CONTACTO */
 form{
   max-width:600px;
-  margin:40px auto;
+  margin:auto;
   background:white;
   padding:40px;
   border-radius:20px;
+  box-shadow:0 20px 40px rgba(0,0,0,.1);
 }
 
-input, textarea{
+input,textarea{
   width:100%;
   padding:14px;
   margin-bottom:15px;
@@ -54,10 +74,18 @@ input, textarea{
 button{
   width:100%;
   padding:14px;
-  background:var(--primary);
-  color:white;
   border:none;
   border-radius:30px;
+  background:var(--primary);
+  color:white;
+  font-size:1.1rem;
   cursor:pointer;
-  
+}
+
+/* FOOTER */
+footer{
+  background:var(--dark);
+  color:white;
+  text-align:center;
+  padding:30px;
 }
