@@ -1,24 +1,18 @@
 <?php
-// ===============================
-// Login administrador
-// ===============================
+session_start();
+include("conexion.php");
 
-session_start(); // Inicia sesión
-include("conexion.php"); // Conecta con la BD
-
-// Verificar que se envió por POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $usuario = trim($_POST["usuario"]);
     $password = trim($_POST["password"]);
 
-    // Validar campos obligatorios
     if (empty($usuario) || empty($password)) {
         echo "Debe llenar todos los campos.";
         exit;
     }
 
-    // Preparar consulta segura
+    // Consulta segura
     $stmt = $conexion->prepare("SELECT id, password FROM admins WHERE usuario = ?");
     $stmt->bind_param("s", $usuario);
     $stmt->execute();
@@ -28,13 +22,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_result($id, $hashed_password);
         $stmt->fetch();
 
-        // Verificar contraseña
+        // Depuración: imprimir el hash y la contraseña ingresada
+        // echo "Ingresada: $password <br> Hash DB: $hashed_password"; exit;
+
         if (password_verify($password, $hashed_password)) {
             $_SESSION["admin_id"] = $id;
             $_SESSION["usuario"] = $usuario;
-
-            // Redirigir al panel de administración
-            header("Location: admin/panel.php");
+            header("Location: panel.php");
             exit;
         } else {
             echo "Contraseña incorrecta.";

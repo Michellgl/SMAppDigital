@@ -2,7 +2,7 @@
 $host = "localhost";
 $usuario = "root";
 $password = "";
-$bd = "sm_consultoria";
+$bd = "SMApp";
 
 $conexion = new mysqli($host, $usuario, $password, $bd);
 
