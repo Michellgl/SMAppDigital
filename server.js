@@ -7,7 +7,7 @@ const PORT = 3000;
 app.use(express.json());
 app.use(express.static("./"));
 
-// Guardar mensaje
+
 app.post("/guardar-mensaje", (req, res) => {
     const { nombre, email, mensaje } = req.body;
 
@@ -23,7 +23,7 @@ app.post("/guardar-mensaje", (req, res) => {
     );
 });
 
-// Admin: obtener mensajes
+
 app.get("/mensajes", (req, res) => {
     db.all("SELECT * FROM mensajes ORDER BY fecha DESC", [], (err, rows) => {
         res.json(rows);
