@@ -14,5 +14,18 @@ db.run(`
         fecha DATETIME DEFAULT CURRENT_TIMESTAMP
     )
 `);
+db.run(`
+    CREATE TABLE IF NOT EXISTS admin (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        usuario TEXT UNIQUE,
+        password TEXT
+    )
+`);
+
+db.run(`
+    INSERT OR IGNORE INTO admin (usuario, password)
+    VALUES ('admin', '1234')
+`);
+
 
 module.exports = db;
