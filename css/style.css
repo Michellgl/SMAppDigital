@@ -1,11 +1,11 @@
 :root{
-  --primary:lab(31.89% 30.44 -62.3);        /* Azul corporativo */
-  --primary-soft:#e0e7ff;
-  --dark:#0f172a;           /* Azul muy oscuro */
+  --primary:lch(31.89% 69.34 296.04);        /* Azul corporativo */
+  --primary-soft:#000000;
+  --dark:#e8e8e9;           /* Azul muy oscuro */
   --text:#1e293b;           /* Texto principal */
-  --muted:#64748b;          /* Texto secundario */
-  --bg:#f8fafc;             /* Fondo general */
-  --card:#d5c7f7;           /* Tarjetas */   
+  --muted:#ffffff;          /* Texto secundario */
+  --bg:#000000;             /* Fondo general */
+  --card:#0041b2;           /* Tarjetas */   
   --border:#e2e8f0;
 }
 
@@ -91,7 +91,7 @@ p{
 .btn{
   display:inline-block;
   padding:14px 34px;
-  background:white;
+  background:rgb(5, 30, 159);
   color:var(--primary);
   border-radius:30px;
   text-decoration:none;
@@ -134,7 +134,7 @@ button{
   border:none;
   border-radius:30px;
   background:var(--primary);
-  color:white;
+  color:rgb(255, 255, 255);
   font-size:1rem;
   font-weight:600;
   cursor:pointer;
@@ -142,13 +142,13 @@ button{
 }
 
 button:hover{
-  background:#1e3a8a;
+  background:#000000;
 }
 
 /* FOOTER */
 footer{
   background:var(--dark);
-  color:#cbd5f5;
+  color:#000000;
   text-align:center;
   padding:35px;
   font-size:.9rem;
@@ -160,7 +160,7 @@ footer{
   bottom: 20px;
   right: 20px;
   background: var(--dark);
-  color: white;
+  color: rgb(0, 0, 0);
   padding: 12px 20px;
   border-radius: 30px;
   text-decoration: none;
@@ -174,4 +174,37 @@ footer{
 .admin-btn:hover{
   background:var(--primary);
   transform: translateY(-3px);
+}
+
+.img-profesional{
+  display:block;
+  max-width:100%;
+  width:200px;              /* Tamaño base */
+  margin:20px auto;         /* Centrada */
+  border-radius:16px;       /* Bordes suaves */
+  transition:.35s ease;
+}
+
+/* Efecto hover sutil */
+.img-profesional:hover{
+  transform:scale(1.05);
+}
+
+/* Variante elegante con sombra */
+.img-shadow{
+  box-shadow:0 18px 35px rgba(15,23,42,.15);
+}
+
+/* Variante para cards */
+.card img{
+  margin-bottom:20px;
+}
+
+.img-profesional1{
+  display:block;
+  max-width:100%;
+  width:500px;              /* Tamaño base */
+  margin:50px auto;         /* Centrada */
+  border-radius:16px;       /* Bordes suaves */
+  transition:.35s ease;
 }
