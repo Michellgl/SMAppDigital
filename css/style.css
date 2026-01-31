@@ -1,37 +1,73 @@
 :root{
-  --primary:#2563eb;
-  --dark:#0f172a;
-  --bg:#f8fafc;
+  --primary:#1e40af;        /* Azul corporativo */
+  --primary-soft:#e0e7ff;
+  --dark:#0f172a;           /* Azul muy oscuro */
+  --text:#1e293b;           /* Texto principal */
+  --muted:#64748b;          /* Texto secundario */
+  --bg:#f8fafc;             /* Fondo general */
+  --card:#ffffff;           /* Tarjetas */
+  --border:#e2e8f0;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",sans-serif;}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
 
-body{background:var(--bg);color:#1e293b;line-height:1.6;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+}
 
-section{padding:90px 10%;}
+/* SECCIONES */
+section{
+  padding:90px 10%;
+}
 
-h1,h2,h3{color:var(--primary);}
+h1,h2,h3{
+  color:var(--dark);
+  font-weight:600;
+}
 
+h2{
+  margin-bottom:40px;
+  font-size:2.2rem;
+  text-align:center;
+}
+
+p{
+  color:var(--muted);
+  font-size:1rem;
+}
+
+/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:30px;
 }
 
+/* CARD */
 .card{
-  background:white;
-  padding:30px;
-  border-radius:20px;
-  box-shadow:0 20px 40px rgba(0,0,0,.1);
-  transition:.4s;
+  background:var(--card);
+  padding:35px;
+  border-radius:16px;
+  border:1px solid var(--border);
+  transition:.35s ease;
 }
 
-.card:hover{transform:translateY(-10px);}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 15px 35px rgba(15,23,42,.08);
+}
 
 /* HERO */
 .hero{
   min-height:100vh;
-  background:linear-gradient(135deg,#2563eb,#1e40af);
+  background:linear-gradient(135deg,#1e3a8a,#1e40af);
   color:white;
   display:flex;
   align-items:center;
@@ -39,38 +75,59 @@ h1,h2,h3{color:var(--primary);}
   text-align:center;
 }
 
-.hero h1{font-size:3.5rem;color:white;}
-
-.hero p{margin:20px 0;font-size:1.3rem;}
-
-.btn{
-  display:inline-block;
-  padding:14px 30px;
-  background:white;
-  color:#2563eb;
-  border-radius:30px;
-  text-decoration:none;
-  font-weight:bold;
+.hero h1{
+  font-size:3.4rem;
+  color:white;
+  letter-spacing:.5px;
 }
 
-/* CONTACTO */
+.hero p{
+  margin:20px 0 35px;
+  font-size:1.2rem;
+  color:#e5e7eb;
+}
+
+/* BOTÓN PRINCIPAL */
+.btn{
+  display:inline-block;
+  padding:14px 34px;
+  background:white;
+  color:var(--primary);
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:600;
+  transition:.3s ease;
+}
+
+.btn:hover{
+  background:var(--primary-soft);
+}
+
+/* FORMULARIOS (CONTACTO + LOGIN) */
 form{
   max-width:600px;
   margin:auto;
-  background:white;
-  padding:40px;
-  border-radius:20px;
-  box-shadow:0 20px 40px rgba(0,0,0,.1);
+  background:var(--card);
+  padding:45px;
+  border-radius:18px;
+  border:1px solid var(--border);
 }
 
 input,textarea{
   width:100%;
-  padding:14px;
-  margin-bottom:15px;
+  padding:14px 16px;
+  margin-bottom:18px;
   border-radius:12px;
-  border:1px solid #cbd5f5;
+  border:1px solid var(--border);
+  font-size:0.95rem;
 }
 
+input:focus,textarea:focus{
+  outline:none;
+  border-color:var(--primary);
+}
+
+/* BOTONES */
 button{
   width:100%;
   padding:14px;
@@ -78,36 +135,43 @@ button{
   border-radius:30px;
   background:var(--primary);
   color:white;
-  font-size:1.1rem;
+  font-size:1rem;
+  font-weight:600;
   cursor:pointer;
+  transition:.3s ease;
+}
+
+button:hover{
+  background:#1e3a8a;
 }
 
 /* FOOTER */
 footer{
   background:var(--dark);
-  color:white;
+  color:#cbd5f5;
   text-align:center;
-  padding:30px;
+  padding:35px;
+  font-size:.9rem;
 }
 
-/* BOTÓN ADMINISTRADOR */
+/* BOTÓN ADMIN */
 .admin-btn{
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: #0f172a;
+  background: var(--dark);
   color: white;
-  padding: 12px 18px;
+  padding: 12px 20px;
   border-radius: 30px;
   text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: bold;
-  box-shadow: 0 10px 25px rgba(0,0,0,.3);
-  transition: .3s ease;
-  z-index: 1000;
+  font-size: 0.85rem;
+  font-weight:600;
+  box-shadow:0 12px 30px rgba(15,23,42,.35);
+  transition:.3s ease;
+  z-index:1000;
 }
 
 .admin-btn:hover{
-  background: #2563eb;
+  background:var(--primary);
   transform: translateY(-3px);
 }
