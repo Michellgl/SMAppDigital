@@ -70,3 +70,9 @@ app.get("/admin-mensajes", authAdmin, (req, res) => {
 app.listen(PORT, () => {
     console.log(`🚀 Servidor activo en http://localhost:${PORT}`);
 });
+
+app.get("/admin-logout", (req, res) => {
+    req.session.destroy(() => {
+        res.json({ ok: true });
+    });
+});

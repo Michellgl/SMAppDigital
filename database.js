@@ -25,8 +25,11 @@ db.run(`
     )
 `);
 
-// Crear admin por defecto (solo la primera vez)
 db.run(`
     INSERT OR IGNORE INTO admin (usuario, password)
-    VALUES ('admin', '1234')
+    VALUES ('Michell', '090604')
+`);
+db.run(`
+    INSERT OR IGNORE INTO admin (usuario, password)
+    VALUES ('Salvador', 'salvador123')
 `);

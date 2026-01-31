@@ -7,9 +7,13 @@
 </head>
 <body>
 
-<nav class="navbar navbar-dark bg-dark px-4">
-<span class="navbar-brand">SMApp Admin</span>
+<nav class="navbar navbar-dark bg-dark px-4 d-flex justify-content-between">
+  <span class="navbar-brand">SMApp Admin</span>
+  <button class="btn btn-outline-light btn-sm" onclick="cerrarSesion()">
+    Cerrar sesión
+  </button>
 </nav>
+
 
 <div class="container mt-4">
 <h3>📨 Mensajes Recibidos</h3>
@@ -44,6 +48,14 @@ fetch("/admin-mensajes")
         </tr>`;
     });
 });
+</script>
+<script>
+function cerrarSesion() {
+    fetch("/admin-logout")
+        .then(() => {
+            location.href = "/admin-login.html";
+        });
+}
 </script>
 
 </body>
