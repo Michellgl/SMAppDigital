@@ -1,11 +1,11 @@
 :root{
-  --primary:#1e40af;        /* Azul corporativo */
+  --primary:lab(31.89% 30.44 -62.3);        /* Azul corporativo */
   --primary-soft:#e0e7ff;
   --dark:#0f172a;           /* Azul muy oscuro */
   --text:#1e293b;           /* Texto principal */
   --muted:#64748b;          /* Texto secundario */
   --bg:#f8fafc;             /* Fondo general */
-  --card:#ffffff;           /* Tarjetas */
+  --card:#ffffff;           /* Tarjetas */   
   --border:#e2e8f0;
 }
 
