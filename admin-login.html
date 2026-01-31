@@ -15,6 +15,11 @@
 
 <button class="btn btn-primary w-100" onclick="login()">Ingresar</button>
 
+<button class="btn btn-outline-secondary w-100 mt-2" onclick="volverInicio()">
+  Volver al inicio
+</button>
+
+
 <p id="error" class="text-danger mt-2 text-center"></p>
 </div>
 
@@ -33,6 +38,27 @@ function login() {
         if (d.ok) location.href = "/admin-panel.html";
         else error.innerText = "Credenciales incorrectas";
     });
+}
+</script>
+<script>
+function login() {
+    fetch("/admin-login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            usuario: usuario.value,
+            password: password.value
+        })
+    })
+    .then(r => r.json())
+    .then(d => {
+        if (d.ok) location.href = "/admin-panel.html";
+        else error.innerText = "Credenciales incorrectas";
+    });
+}
+
+function volverInicio() {
+    location.href = "/index.html";
 }
 </script>
 
