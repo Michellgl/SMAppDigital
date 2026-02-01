@@ -1,75 +1,647 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SMAppDigital | Consultoría Digital</title>
-
-<link rel="stylesheet" href="css/style.css">
-<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMAppDigital | Consultoría en Sistemas y Desarrollo</title>
+  
+  <!-- Fuentes y estilos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  
+  <style>
+    /* Variables y reset */
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #60a5fa;
+      --secondary: #0f172a;
+      --accent: #8b5cf6;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --light-gray: #e2e8f0;
+      --success: #10b981;
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
+      --transition: all 0.3s ease;
+      --border-radius: 12px;
+      --gradient-primary: linear-gradient(135deg, #2563eb, #4f46e5);
+      --gradient-dark: linear-gradient(135deg, #0f172a, #1e293b);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--secondary);
+      background-color: var(--light);
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    section {
+      padding: 100px 0;
+    }
+    
+    /* Botón Admin flotante */
+    .admin-btn {
+      position: fixed;
+      top: 25px;
+      right: 25px;
+      background: var(--gradient-dark);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      z-index: 1000;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .admin-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    /* HERO */
+    .hero {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 180px 0 120px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><path d="M500,50L505,60L510,55L515,65L520,60L525,70L530,65L535,75L540,70L545,80L550,75L555,85L560,80L565,90L570,85L575,95L580,90L585,100L590,95L595,100L600,95L605,100L610,95L615,100L620,95L625,100L630,95L635,100L640,95L645,100L650,95L655,100L660,95L665,100L670,95L675,100L680,95L685,100L690,95L695,100L700,95L705,100L710,95L715,100L720,95L725,100L730,95L735,100L740,95L745,100L750,95L755,100L760,95L765,100L770,95L775,100L780,95L785,100L790,95L795,100L800,95L805,100L810,95L815,100L820,95L825,100L830,95L835,100L840,95L845,100L850,95L855,100L860,95L865,100L870,95L875,100L880,95L885,100L890,95L895,100L900,95L905,100L910,95L915,100L920,95L925,100L930,95L935,100L940,95L945,100L950,95L955,100L960,95L965,100L970,95L975,100L980,95L985,100L990,95L995,100L1000,95L1000,100L0,100Z" fill="white"/></svg>');
+      background-size: 100% 100px;
+      background-position: bottom;
+      background-repeat: no-repeat;
+    }
+    
+    .hero .container {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+    
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      opacity: 0.9;
+    }
+    
+    /* Botones */
+    .btn {
+      display: inline-block;
+      background: white;
+      color: var(--primary);
+      padding: 16px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: var(--transition);
+      border: 2px solid white;
+      box-shadow: var(--shadow);
+    }
+    
+    .btn:hover {
+      background: transparent;
+      color: white;
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    /* Títulos de sección */
+    section h2 {
+      font-size: 2.8rem;
+      text-align: center;
+      margin-bottom: 60px;
+      position: relative;
+    }
+    
+    section h2::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 4px;
+      background: var(--gradient-primary);
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+    
+    /* Grid y tarjetas */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 40px 30px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border: 1px solid var(--light-gray);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--gradient-primary);
+    }
+    
+    .card:hover {
+      transform: translateY(-15px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .card i {
+      font-size: 2.8rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+    
+    /* Sección sobre nosotros */
+    .about {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .about p {
+      font-size: 1.2rem;
+      color: var(--gray);
+    }
+    
+    /* Sección servicios */
+    .services {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    }
+    
+    /* Portafolio */
+    .portfolio-item {
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: white;
+      border-radius: var(--border-radius);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    
+    .portfolio-item:nth-child(1) {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .portfolio-item:nth-child(2) {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+    
+    .portfolio-item:nth-child(3) {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+    
+    .portfolio-item::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    
+    .portfolio-item:hover::after {
+      opacity: 1;
+    }
+    
+    /* Formulario de contacto */
+    #contacto {
+      background: var(--gradient-dark);
+      color: white;
+    }
+    
+    #contacto h2::after {
+      background: white;
+    }
+    
+    .contact-intro {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 50px;
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+    
+    #form {
+      max-width: 700px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+    
+    #form input,
+    #form textarea {
+      padding: 18px 20px;
+      border-radius: var(--border-radius);
+      border: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: var(--transition);
+    }
+    
+    #form input::placeholder,
+    #form textarea::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    #form input:focus,
+    #form textarea:focus {
+      outline: none;
+      border-color: var(--primary-light);
+      background: rgba(255, 255, 255, 0.15);
+    }
+    
+    #form textarea {
+      grid-column: 1 / span 2;
+      min-height: 180px;
+      resize: vertical;
+    }
+    
+    #form button {
+      grid-column: 1 / span 2;
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      padding: 18px;
+      border-radius: var(--border-radius);
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    #form button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--secondary);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 1rem;
+    }
+    
+    /* Animaciones y responsividad */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      section h2 {
+        font-size: 2.2rem;
+      }
+      
+      #form {
+        grid-template-columns: 1fr;
+      }
+      
+      #form textarea {
+        grid-column: 1;
+      }
+      
+      #form button {
+        grid-column: 1;
+      }
+      
+      .admin-btn {
+        top: 20px;
+        right: 20px;
+        padding: 10px 16px;
+        font-size: 13px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      section {
+        padding: 70px 0;
+      }
+      
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* Efectos especiales */
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+  </style>
 </head>
 
 <body>
-<a href="admin-login.html" class="admin-btn">Administrador</a>
-<section class="hero">
-  <div data-aos="fade-up">
-    <h1>SMAppDigital</h1>
-    <p>Consultoría en desarrollo de aplicaciones y páginas web</p>
-    <a href="#contacto" class="btn">Contáctanos</a>
-  </div>
-</section>
 
-<section>
-  <h2 data-aos="fade-right">¿Qué hacemos?</h2>
-  <div class="grid">
-    <div class="card" data-aos="fade-up">
-      <h3>Desarrollo de Aplicaciones</h3>
-      <p>Aplicaciones móviles y sistemas a medida.</p>
+  <!-- Botón Admin flotante -->
+  <a href="admin-login.html" class="admin-btn">
+    <i class="fas fa-cog"></i> Panel Admin
+  </a>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div data-aos="fade-up" data-aos-delay="200">
+        <h1 class="floating">SMAppDigital</h1>
+        <p data-aos="fade-up" data-aos-delay="300">
+          Consultoría especializada en desarrollo de software, aplicaciones y soluciones digitales a la medida para potenciar tu negocio.
+        </p>
+        <a href="#contacto" class="btn" data-aos="fade-up" data-aos-delay="400">Solicitar asesoría gratuita</a>
+      </div>
     </div>
-    <div class="card" data-aos="fade-up" data-aos-delay="150">
-      <h3>Desarrollo Web</h3>
-      <p>Sitios web modernos y profesionales.</p>
+  </section>
+
+  <!-- SOBRE NOSOTROS -->
+  <section>
+    <div class="container">
+      <h2 data-aos="fade-right">¿Quiénes somos?</h2>
+      <div class="about" data-aos="fade-up">
+        <p>
+          En <strong>SMAppDigital</strong> somos una consultoría digital especializada en el diseño, desarrollo e implementación de soluciones tecnológicas innovadoras. Ayudamos a empresas y emprendedores a optimizar sus procesos, mejorar su presencia digital y alcanzar sus objetivos comerciales a través de tecnología de vanguardia.
+        </p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section style="background:#f1f5f9;">
-  <h2 data-aos="fade-left">Servicios</h2>
-  <div class="grid">
-    <div class="card" data-aos="zoom-in">
-      <h3>Aplicaciones y Sitios Web</h3>
+  <!-- QUÉ HACEMOS -->
+  <section>
+    <div class="container">
+      <h2 data-aos="fade-right">¿Qué hacemos?</h2>
+      <div class="grid">
+        <div class="card" data-aos="fade-up" data-aos-delay="100">
+          <i class="fas fa-mobile-alt"></i>
+          <h3>Desarrollo de Aplicaciones</h3>
+          <p>
+            Aplicaciones móviles nativas y multiplataforma diseñadas para resolver necesidades específicas de negocio con las mejores tecnologías del mercado.
+          </p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="200">
+          <i class="fas fa-laptop-code"></i>
+          <h3>Desarrollo Web</h3>
+          <p>
+            Sitios web modernos, responsivos y optimizados para ofrecer una excelente experiencia al usuario y maximizar conversiones.
+          </p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="300">
+          <i class="fas fa-chart-line"></i>
+          <h3>Consultoría Tecnológica</h3>
+          <p>
+            Asesoramiento experto para definir la mejor estrategia tecnológica que impulse el crecimiento de tu empresa.
+          </p>
+        </div>
+      </div>
     </div>
-    <div class="card" data-aos="zoom-in" data-aos-delay="150">
-      <h3>Mantenimiento y Soporte</h3>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="services">
+    <div class="container">
+      <h2 data-aos="fade-left">Nuestros Servicios</h2>
+      <div class="grid">
+        <div class="card" data-aos="zoom-in" data-aos-delay="100">
+          <i class="fas fa-layer-group"></i>
+          <h3>Aplicaciones y Sistemas Web</h3>
+          <p>
+            Desarrollo de sistemas personalizados, APIs y aplicaciones empresariales utilizando tecnologías modernas y escalables.
+          </p>
+        </div>
+        <div class="card" data-aos="zoom-in" data-aos-delay="200">
+          <i class="fas fa-tools"></i>
+          <h3>Mantenimiento y Soporte</h3>
+          <p>
+            Soporte técnico especializado, actualización, seguridad y mejora continua de sistemas existentes.
+          </p>
+        </div>
+        <div class="card" data-aos="zoom-in" data-aos-delay="300">
+          <i class="fas fa-cloud"></i>
+          <h3>Soluciones en la Nube</h3>
+          <p>
+            Migración, implementación y optimización de infraestructura en la nube para mayor eficiencia y seguridad.
+          </p>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section>
-  <h2 data-aos="fade-right">Portafolio</h2>
-  <div class="grid">
-    <div class="card" data-aos="flip-left">Sistema Web</div>
-    <div class="card" data-aos="flip-left" data-aos-delay="100">App Móvil</div>
-    <div class="card" data-aos="flip-left" data-aos-delay="200">Web Corporativa</div>
-  </div>
-</section>
+  <!-- PORTAFOLIO -->
+  <section>
+    <div class="container">
+      <h2 data-aos="fade-right">Proyectos Destacados</h2>
+      <div class="grid">
+        <div class="portfolio-item" data-aos="flip-left" data-aos-delay="100">
+          Sistema Web Administrativo
+        </div>
+        <div class="portfolio-item" data-aos="flip-left" data-aos-delay="200">
+          Aplicación Móvil de Delivery
+        </div>
+        <div class="portfolio-item" data-aos="flip-left" data-aos-delay="300">
+          E-commerce Corporativo
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="contacto">
-  <h2>Contacto</h2>
-  <form id="form">
-    <input type="text" name="name" placeholder="Nombre" required>
-    <input type="email" name="email" placeholder="Correo" required>
-    <textarea name="message" placeholder="Mensaje" required></textarea>
-    <button type="submit">Enviar mensaje</button>
-  </form>
-</section>
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="container">
+      <h2 data-aos="fade-up">Contáctanos</h2>
+      <p class="contact-intro" data-aos="fade-up" data-aos-delay="100">
+        Déjanos tus datos y nos pondremos en contacto contigo a la brevedad para una consultoría gratuita.
+      </p>
 
-<footer>
-  © 2026 SMAppDigital
-</footer>
+      <form id="form" data-aos="fade-up" data-aos-delay="200">
+        <input type="text" name="name" placeholder="Nombre completo" required>
+        <input type="email" name="email" placeholder="Correo electrónico" required>
+        <textarea name="message" placeholder="Describe brevemente tu proyecto o necesidad" required></textarea>
+        <button type="submit">
+          <i class="fas fa-paper-plane"></i> Enviar solicitud
+        </button>
+      </form>
+    </div>
+  </section>
 
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script src="js/main.js"></script>
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      © 2026 SMAppDigital | Consultoría en Sistemas Computacionales
+      <div style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">
+        <i class="fas fa-phone-alt"></i> +52 123 456 7890 &nbsp; | &nbsp;
+        <i class="fas fa-envelope"></i> contacto@smappdigital.com
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  
+  <script>
+    // Inicializar AOS
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+    });
+    
+    // Efecto de partículas en el hero
+    document.addEventListener('DOMContentLoaded', function() {
+      const hero = document.querySelector('.hero');
+      
+      for(let i = 0; i < 20; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.width = Math.random() * 5 + 2 + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.opacity = Math.random() * 0.5 + 0.2;
+        hero.appendChild(particle);
+      }
+      
+      // Animación de partículas
+      const particles = document.querySelectorAll('.particle');
+      particles.forEach(p => {
+        p.style.animation = `moveParticle ${Math.random() * 10 + 5}s linear infinite`;
+      });
+      
+      // Manejo del formulario
+      const form = document.getElementById('form');
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Simulación de envío exitoso
+        const button = form.querySelector('button');
+        const originalText = button.innerHTML;
+        
+        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+        button.disabled = true;
+        
+        setTimeout(() => {
+          button.innerHTML = '<i class="fas fa-check"></i> ¡Mensaje enviado!';
+          button.style.background = 'var(--success)';
+          
+          setTimeout(() => {
+            button.innerHTML = originalText;
+            button.disabled = false;
+            button.style.background = '';
+            form.reset();
+          }, 3000);
+        }, 1500);
+      });
+    });
+    
+    // Estilo CSS para animación de partículas
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes moveParticle {
+        0% { transform: translateY(0) translateX(0); }
+        100% { transform: translateY(-100vh) translateX(20px); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+
 </body>
 </html>
